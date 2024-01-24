@@ -1,9 +1,15 @@
+"use client"
 import React from 'react'
+import Form from './components/form'
+
 
 const page = () => {
+  
+  
   return (
-    <>  
-        <h1>Sign Up</h1>
+    <>
+      <Form   />
+
     </>
   )
 }
