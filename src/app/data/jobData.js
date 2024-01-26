@@ -69,6 +69,20 @@ let jobs = [
     employerId: 'employer5',
     companyId: 'company5'
   },
+  {
+    id: '4',
+    title: 'UX/UI Designer',
+    description: 'DesignHub is in search of a creative UX/UI Designer to join our design team.',
+    requirements: 'Proven experience in designing user interfaces and creating wireframes, user flows, and prototypes.',
+    location: 'Pune',
+    type: 'Full Time',
+    salary: '55000-65000',
+    postedAt: '2022-01-04T00:00:00Z',
+    colleges: ['college5'],
+    applicants: ['applicant6'],
+    employerId: 'employer4',
+    companyId: 'company4'
+  },
   // Add more jobs as needed
 ];
 

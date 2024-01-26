@@ -17,8 +17,10 @@ let applicantData = [
     email: 'bob.johnson@example.com',
     collegeId: 'college1',
   },
+ 
   // Add more student data as needed
 ];
+
 
 export const getApplicants = () => {
   return applicantData;

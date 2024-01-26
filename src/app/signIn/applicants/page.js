@@ -8,7 +8,7 @@ const page = () => {
   
   return (
     <>
-    <h1>shrye</h1>
+      <Form   />
 
     </>
   )

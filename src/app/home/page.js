@@ -4,6 +4,9 @@ import Filtercard from "./components/Filtercard";
 import Jobcard from "./components/Jobcard";
 import Profilecard from "./components/Profilecard";
 import dynamic from 'next/dynamic'
+import { useRouter } from "next/navigation";
+// import jwt from "jsonwebtoken";
+// import Cookies from 'js-cookie';
 
 import Loading from "./Loading";
 
@@ -17,30 +20,60 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+
 const Page = () => {
-  
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
-  const collegeId = localStorage.getItem("collegeId");
-  // const [college, setCollege] = useState("college2");
+
+  // const removeCookie =async () => {
+  //   try {
+  //     const res = await fetch('/api/applicants/removeCookie');
+  //     if (!res.ok) { // res.ok returns false if the response status is not 200-299
+  //       throw new Error('Network response was not ok');
+  //     } else {
+  //       await res.json();
+  //       // After successfully removing the cookie, you can redirect the user to the login page
+  //       router.push('/');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // }
+  
+
+  
+
+ 
+
+  const collegeId = "college8"
 
   useEffect(() => {
-    fetch(`/api/jobs/${collegeId}`)
-      .then(res => {
-        if (!res.ok) { // res.ok returns false if the response status is not 200-299
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then(data => {
-        setJobs(data.jobs);
-        setLoading(false);
-      })
-      .catch(error => {
-        // setError(error.message);
-        // setLoading(false);
-      });
-  }, [collegeId]); 
+    if (!collegeId ) {
+      router.push('/signIn/applicants');
+    } else {
+      fetch(`/api/jobs/${collegeId}`)
+        .then(res => {
+          if (res.status === 401) { // If the status is 401, the token is expired
+            router.push('/signIn/applicants');
+          } else if (!res.ok) { // res.ok returns false if the response status is not 200-299
+            throw new Error('Network response was not ok');
+          } else {
+            return res.json();
+          }
+        })
+        .then(data => {
+          if (data) {
+            setJobs(data.jobs);
+            setLoading(false);
+          }
+        })
+        .catch(error => {
+          // setError(error.message);
+          // setLoading(false);
+        });
+    }
+  }, [collegeId, router]);
 
   if(loading) return <Loading />
 
@@ -48,6 +81,8 @@ const Page = () => {
     loading: () => <Loading />,
     ssr: false
   });
+
+ 
 
 
 
@@ -68,6 +103,8 @@ const Page = () => {
     
 
     <>
+    {/* <Button variant="outline" onClick={LogOut}>LogOut</Button> */}
+    {/* <button onClick={removeCookie}>LogOut</button> */}
       <section class="grid grid-cols-3 gap-4">
         <div class="col-span-12 bg-blue-500">
           <h1>Lets find a dream job</h1>
