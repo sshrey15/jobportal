@@ -26,54 +26,51 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
 
-  // const removeCookie =async () => {
-  //   try {
-  //     const res = await fetch('/api/applicants/removeCookie');
-  //     if (!res.ok) { // res.ok returns false if the response status is not 200-299
-  //       throw new Error('Network response was not ok');
-  //     } else {
-  //       await res.json();
-  //       // After successfully removing the cookie, you can redirect the user to the login page
-  //       router.push('/');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // }
-  
-
-  
-
  
 
   const collegeId = "college8"
 
   useEffect(() => {
-    if (!collegeId ) {
-      router.push('/signIn/applicants');
-    } else {
-      fetch(`/api/jobs/${collegeId}`)
-        .then(res => {
+    const fetchData = async () => {
+      if (!collegeId) {
+        router.push('/signIn/applicants');
+      } else {
+        try {
+          const res = await fetch(`/api/jobs/${collegeId}`);
           if (res.status === 401) { // If the status is 401, the token is expired
             router.push('/signIn/applicants');
           } else if (!res.ok) { // res.ok returns false if the response status is not 200-299
             throw new Error('Network response was not ok');
           } else {
-            return res.json();
+            const data = await res.json();
+            if (data) {
+              setJobs(data.jobs);
+              setLoading(false);
+            }
           }
-        })
-        .then(data => {
-          if (data) {
-            setJobs(data.jobs);
-            setLoading(false);
-          }
-        })
-        .catch(error => {
-          // setError(error.message);
-          // setLoading(false);
-        });
-    }
+        } catch (error) {
+          console.error(
+            'You have an error in your code or there are Network issues.',
+            error
+          );
+        }
+      }
+    };
+  
+    fetchData();
   }, [collegeId, router]);
+
+  async function applicantData(){
+    if(collegeId){
+      router.push('/signIn/applicants')
+    }else{
+      const response = await fetch(`/api/jobs/${collegeId}`)
+      const data = await response.json();
+      setJobs(data.jobs);
+      setLoading(false);
+      
+    }
+  }
 
   if(loading) return <Loading />
 

@@ -50,6 +50,12 @@ export const getById = (id) => {
   return applicantData.find(applicant => applicant.id === id);
 }
 
+export const checkCollegeExists = (collegeId) => {
+  return applicantData.some(applicant => applicant.collegeId === collegeId);
+}
+
 export const addApplicant = (applicant) => {
+  
+ 
   applicantData.push(applicant);
 }

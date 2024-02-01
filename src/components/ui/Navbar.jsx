@@ -1,5 +1,6 @@
 "use client"
 import Link from 'next/link';
+import DialogDemo from "@/components/ui/loginModal"
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -41,8 +42,7 @@ const Navbar = () => {
         </div>
         <div >
           {!isLoggedIn ? (
-            <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Login</button>
-          ) : (
+<DialogDemo/>          ) : (
             <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Logout</button>
           )}
                       <button className="inline-block ml-3 text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" onClick={removeCookie}>Logout</button>

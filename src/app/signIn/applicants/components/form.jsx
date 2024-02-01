@@ -1,14 +1,19 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 const Form = () => {
+  
   const { register, handleSubmit } = useForm();
+
   const router = useRouter();
+
+  
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://localhost:3000/api/applicants', {
+     
+      const response = await fetch('/api/applicants', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,16 +24,15 @@ const Form = () => {
       if (!response.ok) {
         throw new Error('HTTP error ' + response.status);
       }
-  
+      
       const responseData = await response.json();
-      console.log('responseData: ', responseData);
-  
+    
       
      
     } catch (error) {
       console.error('Fetch error: ', error);
     } finally {
-      // Redirect to the /home page
+      ;
       router.push('/home');
     }
   }
@@ -47,19 +51,7 @@ const Form = () => {
         College ID:
         <input type="text" {...register("collegeId")} className="mt-1 p-2 border border-gray-300 rounded-md" />
       </label>
-      {/* <label className="flex flex-col w-64">
-        Security Question:
-        <select {...register("securityQuestion")} className="mt-1 p-2 border border-gray-300 rounded-md">
-          <option value="pet">What is your first pet's name?</option>
-          <option value="school">What is your elementary school's name?</option>
-    
-        </select>
-      </label>
-
-      <label className="flex flex-col w-64">
-        Answer:
-        <input type="text" {...register("securityAnswer")} className="mt-1 p-2 border border-gray-300 rounded-md" />
-      </label> */}
+   
       <input type="submit" className="p-2 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-700" />
     </form>
   );
