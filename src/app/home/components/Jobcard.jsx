@@ -66,6 +66,7 @@ const Jobcard = ({ job }) => {
             </CardContent>
             <CardFooter>
                 <p>Posted on: {job.postedAt}</p>
+                <Button variant="outline" className="bg-gray-900 text-white ">Apply</Button>
             </CardFooter>
         </Card>
     )

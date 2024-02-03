@@ -9,6 +9,8 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
+    DialogClose,
+    
     
 } from "@/components/ui/dialog"
 
@@ -21,9 +23,9 @@ export function DialogDemo() {
     
     
     return (
-        <Dialog >
+        <Dialog  >
             <DialogTrigger asChild>
-                <Button variant="outline">Login</Button>
+                <Button variant="outline" className="hover:bg-green-400 rounded-full">Login</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -32,9 +34,14 @@ export function DialogDemo() {
                         Join and get jobs sent to you instead of searching for them
                     </DialogDescription>
                 </DialogHeader>
+                <DialogClose asChild>
+                    <Form />
+                </DialogClose>
+                 
+             
                 
             
-              <Form/>
+            
            
           
                    
