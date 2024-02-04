@@ -1,6 +1,5 @@
 "use client"
-import jwt from 'jsonwebtoken'
-import Cookies from 'js-cookie'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import {
@@ -12,6 +11,7 @@ import {
   CardTitle,
 
 } from "@/components/ui/card"
+import { Button } from '@/components/ui/button'
 
 //BEST PRACTICE TO FETCHING DATA FROM SERVER
 
@@ -52,7 +52,9 @@ const Profilecard = () => {
         <CardDescription>Location: {applicant.location}</CardDescription>
       </CardContent>
       <CardFooter>
-       
+        <Link href="/profile/applicants" className='w-full' >
+        <Button variant="solid" className=" bg-green-400 text-gray-900 w-full">Update Profile</Button>
+        </Link>
       </CardFooter>
     </Card>
   )

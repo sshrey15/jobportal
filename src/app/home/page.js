@@ -72,7 +72,7 @@ const Page = () => {
     }
   }
 
-  if(loading) return <Loading />
+  // if(loading) return <Loading />
 
   const Jobcard = dynamic(() => import('./components/Jobcard'), {
     loading: () => <Loading />,
@@ -102,7 +102,7 @@ const Page = () => {
     <>
     {/* <Button variant="outline" onClick={LogOut}>LogOut</Button> */}
     {/* <button onClick={removeCookie}>LogOut</button> */}
-      <section class="grid grid-cols-3 gap-4">
+      {/* <section class="grid grid-cols-3 gap-4">
         <div class="col-span-12 bg-blue-500">
           <h1>Lets find a dream job</h1>
         </div>
@@ -118,7 +118,7 @@ const Page = () => {
             <PaginationNext />
           </Pagination>
         </div>
-      </section>
+      </section> */}
 
       <div class="grid grid-cols-4 gap-2 ">
         <div class="   p-4">

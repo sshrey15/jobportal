@@ -5,8 +5,6 @@ import jwt from "jsonwebtoken";
 import { verifyToken } from "@/utils/token";
 
 
-
-
 export const GET = async (req,res) => {
   try {
     const decodedToken = verifyToken(req);

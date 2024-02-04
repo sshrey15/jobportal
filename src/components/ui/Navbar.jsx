@@ -4,6 +4,7 @@ import DialogDemo from "@/components/ui/loginModal"
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Form } from 'react-hook-form';
+import { Button } from "@/components/ui/button"
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,9 +41,9 @@ const Navbar = () => {
           <Link href="/home" className="block  text-lg lg:inline-block lg:mt-0 text-white hover:text-green-400 mr-4">
             Jobs
           </Link>
-          {/* <Link href="/home" className="block  text-lg  lg:inline-block lg:mt-0 text-white hover:text-white mr-4">
-            Profile
-          </Link> */}
+          <Link href="/home" className="block ml-4  text-lg lg:inline-block lg:mt-0 text-white hover:text-green-400 mr-4">
+            GiveJobs
+          </Link>
 
 
           {isLoggedIn && (
@@ -55,8 +56,8 @@ const Navbar = () => {
           ) : (
             <DialogDemo />
           )}
-          <button className="inline-block text-sm px-4 py-2 ml-3 leading-none border rounded-full text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 " onClick={removeCookie}>Logout</button>
-
+                <Button variant="solid" onClick={removeCookie} className="hover:bg-white ml-4 bg-green-400 rounded-full">Logout</Button>
+       
 
         </div>
       </div>

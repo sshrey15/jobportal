@@ -28,11 +28,15 @@ export function DialogDemo() {
                 <Button variant="outline" className="hover:bg-green-400 rounded-full">Login</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                    <DialogTitle>Login</DialogTitle>
-                    <DialogDescription>
-                        Join and get jobs sent to you instead of searching for them
-                    </DialogDescription>
+                <DialogHeader className="flex-auto">
+                    <DialogTitle className="text-xl font-bold">Login
+                    <DialogDescription className="text-green-400 hover:text-gray-900">
+                        Employer SignUp
+                    </DialogDescription>    
+
+                    </DialogTitle>
+
+                    
                 </DialogHeader>
                 <DialogClose asChild>
                     <Form />
